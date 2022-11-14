@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Back.Migrations
+namespace Back.Persistance.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
