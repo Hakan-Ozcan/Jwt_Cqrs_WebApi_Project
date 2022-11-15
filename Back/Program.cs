@@ -1,5 +1,9 @@
+using Back.Core.Application.Interfaces;
 using Back.Persistance.Context;
+using Back.Persistance.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +17,8 @@ builder.Services.AddDbContext<Jwt_CqrsContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
